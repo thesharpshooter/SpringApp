@@ -4,31 +4,27 @@ import javax.sql.DataSource;
 
 import org.gradle.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(InfrastructureConfig.class)
+@ComponentScan(basePackages = "org.gradle")
 public class AppConfig {
 
 	@Autowired
 	private DataSource datasource;
+	@Autowired @Qualifier("redSox")
+	private Team home;
+	@Autowired @Qualifier("cubs")
+	private Team away;
 
 	@Bean
 	public Game game() {
-		BaseballGame baseballGame = new BaseballGame(RedSox(), Royals());
+		BaseballGame baseballGame = new BaseballGame(home, away);
 		baseballGame.setDataSource(datasource);
 		return baseballGame;
 	}
 
-	@Bean
-	public Team RedSox() {
-		return new RedSox();
-	}
-
-	@Bean
-	public Team Royals() {
-		return new Royals();
-	}
 }
