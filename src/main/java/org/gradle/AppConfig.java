@@ -24,7 +24,7 @@ public class AppConfig {
 	private Team away;
 
 	@Bean
-	@Scope("prototype")
+//	@Scope("prototype")
 	public Game game() {
 		BaseballGame baseballGame = new BaseballGame(home, away);
 		baseballGame.setDataSource(datasource);

@@ -16,7 +16,7 @@ public class BaseballGame implements Game {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 	}
-
+	
 	@PostConstruct
 	public void startGame() {
 		System.out.println("Playing National anthem!!");
@@ -54,7 +54,7 @@ public class BaseballGame implements Game {
 	public String toString() {
 		return "The game is between " + this.getHomeTeam().getName() + " and " + this.getAwayTeam().getName();
 	}
-
+	
 	@PreDestroy
 	public void endGame() {
 		System.out.println("Cleaning the fields!!");
