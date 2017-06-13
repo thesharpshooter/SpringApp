@@ -1,14 +1,22 @@
 package org.gradle;
 
+
+import javax.sql.DataSource;
+
 import org.gradle.entities.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import(InfrastructureConfig.class)
 public class AppConfig {
 	@Bean
-	public Game game() {
-		return new BaseballGame(RedSox(), Royals());
+	public Game game(DataSource datasource) {
+		BaseballGame baseballGame =  new BaseballGame(RedSox(), Royals());
+		baseballGame.setDataSource(datasource);
+		return baseballGame;
 	}
 
 	@Bean

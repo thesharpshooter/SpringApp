@@ -1,8 +1,11 @@
 package org.gradle.entities;
 
+import javax.sql.DataSource;
+
 public class BaseballGame implements Game {
 	private Team homeTeam;
 	private Team awayTeam;
+	private DataSource dataSource;
 
 	public BaseballGame() {
 	}
@@ -28,7 +31,15 @@ public class BaseballGame implements Game {
 		return awayTeam;
 	}
 
-	public String playGame(){
-		return Math.random()<0.5?getHomeTeam().getName():getAwayTeam().getName();
+	public String playGame() {
+		return Math.random() < 0.5 ? getHomeTeam().getName() : getAwayTeam().getName();
+	}
+
+	public void setDataSource(DataSource datasource) {
+		this.dataSource = datasource;
+	}
+
+	public DataSource getDataSource() {
+		return dataSource;
 	}
 }
