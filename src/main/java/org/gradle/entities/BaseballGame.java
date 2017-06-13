@@ -1,5 +1,7 @@
 package org.gradle.entities;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 public class BaseballGame implements Game {
@@ -13,6 +15,12 @@ public class BaseballGame implements Game {
 	public BaseballGame(Team homeTeam, Team awayTeam) {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
+	}
+
+	@PostConstruct
+	public void startGame() {
+		System.out.println("Playing National anthem!!");
+		;
 	}
 
 	public void setHomeTeam(Team homeTeam) {
@@ -34,7 +42,6 @@ public class BaseballGame implements Game {
 	public String playGame() {
 		return Math.random() < 0.5 ? getHomeTeam().getName() : getAwayTeam().getName();
 	}
-	
 
 	public void setDataSource(DataSource datasource) {
 		this.dataSource = datasource;
@@ -43,8 +50,13 @@ public class BaseballGame implements Game {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return "The game is between " + this.getHomeTeam().getName() + " and " + this.getAwayTeam().getName();
+	}
+
+	@PreDestroy
+	public void endGame() {
+		System.out.println("Cleaning the fields!!");
 	}
 }

@@ -23,12 +23,12 @@ public class AppConfig {
 	@Qualifier("cubs")
 	private Team away;
 
-	@Bean @Scope("prototype")
+	@Bean
+	@Scope("prototype")
 	public Game game() {
 		BaseballGame baseballGame = new BaseballGame(home, away);
 		baseballGame.setDataSource(datasource);
 		return baseballGame;
 	}
-	
 
 }
