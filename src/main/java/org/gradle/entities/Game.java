@@ -10,5 +10,7 @@ public interface Game {
 	Team getAwayTeam();
 
 	String playGame();
+	
+	String toString();
 
 }

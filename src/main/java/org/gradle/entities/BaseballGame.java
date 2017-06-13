@@ -34,6 +34,7 @@ public class BaseballGame implements Game {
 	public String playGame() {
 		return Math.random() < 0.5 ? getHomeTeam().getName() : getAwayTeam().getName();
 	}
+	
 
 	public void setDataSource(DataSource datasource) {
 		this.dataSource = datasource;
@@ -41,5 +42,9 @@ public class BaseballGame implements Game {
 
 	public DataSource getDataSource() {
 		return dataSource;
+	}
+	
+	public String toString(){
+		return "The game is between " + this.getHomeTeam().getName() + " and " + this.getAwayTeam().getName();
 	}
 }

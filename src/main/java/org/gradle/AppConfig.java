@@ -15,9 +15,11 @@ public class AppConfig {
 
 	@Autowired
 	private DataSource datasource;
-	@Autowired @Qualifier("redSox")
+	@Autowired
+	@Qualifier("redSox")
 	private Team home;
-	@Autowired @Qualifier("cubs")
+	@Autowired
+	@Qualifier("cubs")
 	private Team away;
 
 	@Bean
@@ -26,5 +28,6 @@ public class AppConfig {
 		baseballGame.setDataSource(datasource);
 		return baseballGame;
 	}
+	
 
 }
